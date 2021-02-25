@@ -20,9 +20,9 @@
   <label>К кому записаться?</label> <br>
   <select name="option" class="form-control">
     <option value="none" selected>Выберите парикмахера</option>
-    <option>Jessie Pinkman</option>
-    <option>Waltrer White</option>
-    <option>Mrs. Cavalier</option>
+    <option <%= @option == 'Jessie Pinkman' ? 'selected': '' %>>Jessie Pinkman</option>
+    <option <%= @option == 'Waltrer White' ? 'selected': '' %>>Waltrer White</option>
+    <option <%= @option == 'Mrs. Cavalier' ? 'selected': '' %>>Mrs. Cavalier</option>
   </select> <br> <br>
   <div class="form-group">
     <label>Выберите цвет коронки:</label>    
