@@ -3,6 +3,7 @@ require 'sinatra'
 require 'sinatra/reloader'
 
 
+
 #ruby comment test
 
 get '/' do
@@ -21,14 +22,14 @@ end
 post '/visit' do
 	@username = params[:username]
 	@phone = params[:phone]
-	@datetime = params[:datetime]
+	@date_stamp = params[:date_stamp]
 	@option = params[:option]
 	@color = params[:color]
 
 
 	hh = {:username => 'Введите имя',
 		  :phone => 'Введите телефон',
-		  :datetime => 'Неправильная дата'}
+		  :date_stamp => 'Неправильная дата'}
 	hh.each do |key, value|
 		if params[key]==''
 			@error = hh[key]
@@ -39,9 +40,9 @@ post '/visit' do
 	
 
 	@title = "Все готово!"
-	@message = "#{@username}, благодарим за запись, ждем вас в #{@datetime}, вы записались к #{@option}"
+	@message = "#{@username}, благодарим за запись, ждем вас в #{@date_stamp}", вы записались к #{@option}"
 	f = File.open './public/vizit_users.txt', 'a'
-	f.write "User: #{@username}, phone: #{@phone}, date: #{@datetime}, option #{@option}, color: #{@color}\n"
+	f.write "User: #{@username}, phone: #{@phone}, date: #{@date_stamp}, option #{@option}, color: #{@color}\n"
 	f.close
 
 	erb :message
