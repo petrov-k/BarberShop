@@ -1,7 +1,12 @@
 require 'rubygems'
 require 'sinatra'
 require 'sinatra/reloader'
+require 'sqlite3'
 
+configure do 
+	@db = SQLite3::Database.new 'barbershop.db'
+	@db.execute 'CREATE TABLE "Users" ("Id" INTEGER PRIMARY KEY AUTOINCREMENT, "username" TEXT, "phone" TEXT, "date_stamp" TEXT, "option" TEXT, "color" TEXT)'
+end
 
 
 #ruby comment test
@@ -40,7 +45,7 @@ post '/visit' do
 	
 
 	@title = "Все готово!"
-	@message = "#{@username}, благодарим за запись, ждем вас в #{@date_stamp}", вы записались к #{@option}"
+	@message = "#{@username}, благодарим за запись, ждем вас в #{@date_stamp}, вы записались к #{@option}"
 	f = File.open './public/vizit_users.txt', 'a'
 	f.write "User: #{@username}, phone: #{@phone}, date: #{@date_stamp}, option #{@option}, color: #{@color}\n"
 	f.close
