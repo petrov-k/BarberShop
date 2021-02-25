@@ -1,0 +1,19 @@
+<h1>Вы можете связаться с нами по почте:</h1>
+<form action="/contacts" method="POST" role="form">
+	<div class="form-group">
+		<label>Оставьте свой email: </label>
+		<input name="email" type="email" class="form-control" placeholder="Ваше email" value="<%=@email%>">
+	</div>
+	<div class="form-group">
+		<label>Ваше сообщение: </label>
+		<textarea name="textmessage" type="textarea" class="form-control" placeholder="Ваше сообщение" rows="5" cols="10" value = "<%=@textmessage%>"> </textarea>
+	</div>
+	<button type="submit" class="btn btn-primary">Отправить</button>
+</form>
+
+
+
+<h1>Наши контакты</h1>
+<p>Украина г. Киев</p>
+<p>ул. Петра Григоренка 313</p>
+<p>тел. 9379992</p>
