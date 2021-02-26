@@ -4,8 +4,17 @@ require 'sinatra/reloader'
 require 'sqlite3'
 
 configure do 
-	@db = SQLite3::Database.new 'barbershop.db'
-	@db.execute 'CREATE TABLE IF NOT EXISTS "Users" ("Id" INTEGER PRIMARY KEY AUTOINCREMENT, "username" TEXT, "phone" TEXT, "date_stamp" TEXT, "option" TEXT, "color" TEXT)'
+	db = get_db
+	db.execute 'CREATE TABLE IF NOT EXISTS 
+		"Users" 
+		(
+			"Id" INTEGER PRIMARY KEY AUTOINCREMENT, 
+			"username" TEXT, 
+			"phone" TEXT, 
+			"date_stamp" TEXT, 
+			"option" TEXT, 
+			"color" TEXT
+		)'
 end
 
 
@@ -42,7 +51,17 @@ post '/visit' do
 		end
 	end
 
-	
+	db = get_db
+	db.execute 'insert into 
+		Users 
+		(
+			username, 
+			phone, 
+			date_stamp, 
+			option, 
+			color
+		)
+		values ( ?, ?, ?, ?, ?)', [@username, @phone, @date_stamp, @option, @color]
 
 	@title = "Все готово!"
 	@message = "#{@username}, благодарим за запись, ждем вас в #{@date_stamp}, вы записались к #{@option}"
@@ -82,4 +101,8 @@ post '/contacts' do
 	z.close
 
 	erb :message
+end
+
+def get_db
+	return SQLite3::Database.new 'barbershop.db'
 end
