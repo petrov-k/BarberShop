@@ -5,7 +5,7 @@ require 'sqlite3'
 
 configure do 
 	@db = SQLite3::Database.new 'barbershop.db'
-	@db.execute 'CREATE TABLE "Users" ("Id" INTEGER PRIMARY KEY AUTOINCREMENT, "username" TEXT, "phone" TEXT, "date_stamp" TEXT, "option" TEXT, "color" TEXT)'
+	@db.execute 'CREATE TABLE IF NOT EXISTS "Users" ("Id" INTEGER PRIMARY KEY AUTOINCREMENT, "username" TEXT, "phone" TEXT, "date_stamp" TEXT, "option" TEXT, "color" TEXT)'
 end
 
 
