@@ -2,3 +2,6 @@
 barbershop.db
 barbershop.db
 public/vizit_users.txt
+public/vizit_users.txt
+barbershop.db
+*.txt
