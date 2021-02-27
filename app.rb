@@ -15,6 +15,12 @@ configure do
 			"option" TEXT, 
 			"color" TEXT
 		)'
+	db.execute 'CREATE TABLE IF NOT EXISTS 
+			"Barbers"
+			(
+				"Id" INTEGER PRIMARY KEY AUTOINCREMENT,
+				"option" TEXT
+			)'
 end
 
 
@@ -30,6 +36,7 @@ get '/about' do
 end
 
 get '/visit' do
+	
 	erb :visit
 end
 
@@ -103,6 +110,22 @@ post '/contacts' do
 	erb :message
 end
 
+get '/showusers' do
+
+	db = get_db
+	@comeonbaby = db.execute 'select * from Users order by id desc'
+
+	
+
+
+
+	erb :showusers
+end
+
+
 def get_db
 	return SQLite3::Database.new 'barbershop.db'
+	db.results_as_hash = true
+	return db
 end
+
