@@ -2,38 +2,29 @@
 <%=@comeonbaby%>
 
 <table class="table table-hover">
-    <thead>
-        <th scope="col">#</th>
-        <th scope="col">Username</th>
-        <th scope="col">Phone</th>
-        <th scope="col">Date</th>
-        <th scope="col">Barber</th>
-        <th scope="col">Color</th>
-    </thead>
-    <tbody>
+     <thead>
+            <th scope="col">#</th>
+            <th scope="col">Username</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Date</th>
+            <th scope="col">Barber</th>
+            <th scope="col">Color</th>
+        </thead>
+    <% @comeonbaby.each do |row| %>
+           <tbody>
         <tr>
-            <th scope="row">1</td>
-            <td>ыыы</td>
-            <td>аааа</td>
-            <td>ыыы</td>
-            <td>аааа</td>
-            <td>ыыы</td>            
+            <th scope="row"><%= row[0]%></td>
+            <td><%= row[1]%></td>
+            <td><%= row[2]%></td>
+            <td><%= row[3]%></td>
+            <td><%= row[4]%></td>
+            <td><%= row[5]%></td>            
         </tr>
-        <tr>
-            <th scope="row">2</td>
-            <td>ыыы</td>
-            <td>аааа</td>
-            <td>ыыы</td>
-            <td>аааа</td>
-            <td>ыыы</td>            
-        </tr>
-        <tr>
-            <th scope="row">3</td>
-            <td>ыыы</td>
-            <td>аааа</td>
-            <td>ыыы</td>
-            <td>аааа</td>
-            <td>ыыы</td>            
-        </tr>
+      
     </tbody>
+
+    <% end %>
+
+
+
 </table>
